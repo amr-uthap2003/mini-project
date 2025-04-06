@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrightMind - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            background: url('https://images.pexels.com/photos/4101143/pexels-photo-4101143.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .navbar {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 0.8rem;
+        }
+        .navbar .center-links {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1rem;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5); /* Add a translucent overlay */
+        }
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .buttons {
+            margin-bottom: 2rem;
+        }
+        .buttons a {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: white;
+            text-decoration: none;
+            border: 2px solid white;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .buttons a:hover {
+            background-color: white;
+            color: black;
+        }
+        .quotes {
+            margin-top: 30px;
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+        .quote {
+            display: none;
+            margin: 10px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        .additional-headings {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .additional-headings h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar d-flex align-items-center">
+        <div class="center-links">
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div>
+            <a href="profile.html">Profile</a>
+            <a href="signout.html">Sign Out</a>
+            <a href="logout.html">Logout</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>Welcome to BrightMind</h1>
+        <p>Your Partner in Academic and Personal Growth</p>
+        <div class="buttons">
+            <a href="login.php" class="btn btn-outline-light">Login</a>
+            <a href="signup.php" class="btn btn-outline-light">Sign Up</a>
+        </div>
+        <div class="quotes">
+            <p class="quote">"The best way to predict your future is to create it." - Abraham Lincoln</p>
+            <p class="quote">"Believe you can, and you're halfway there." - Theodore Roosevelt</p>
+            <p class="quote">"Your mental health is a priority. Your happiness is essential."</p>
+            <p class="quote">"Success is not final, failure is not fatal: It is the courage to continue that counts." - Winston Churchill</p>
+        </div>
+        <div class="additional-headings">
+            <h2>BeginMind - Home</h2>
+            <h2>localhost/pro/new1.html</h2>
+            <h2>AmaLyonit College of Engineer X</h2>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 BrightMind. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            let quotes = $('.quote');
+            let index = 0;
+            
+            function showQuote() {
+                quotes.hide();
+                quotes.eq(index).fadeIn(1000);
+                index = (index + 1) % quotes.length;
+            }
+
+            showQuote();
+            setInterval(showQuote, 4000);
+        });
+    </script>
+</body>
+</html>

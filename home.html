@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrightMind - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            background: url('/api/placeholder/1260/750') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .navbar {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 0.8rem;
+        }
+        .navbar .center-links {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1rem;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 2rem;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            padding: 4rem 2rem;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            text-align: center;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .cta-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .cta-btn {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border: 2px solid white;
+            border-radius: 5px;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            text-decoration: none;
+        }
+        .cta-btn:hover {
+            background-color: white;
+            color: black;
+        }
+        .testimonials {
+            padding: 4rem 2rem;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        .testimonials h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        .testimonial-slider {
+            display: flex;
+            overflow-x: hidden;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            margin: 0 auto;
+            max-width: 1000px;
+        }
+        .testimonial {
+            flex: 0 0 100%;
+            scroll-snap-align: start;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin: 0 1rem;
+        }
+        .testimonial-content {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 1rem;
+        }
+        .author-details {
+            display: flex;
+            flex-direction: column;
+        }
+        .author-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .author-title {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            margin: 0 8px;
+            cursor: pointer;
+        }
+        .slider-dot.active {
+            background: white;
+        }
+        .courses-preview {
+            padding: 4rem 2rem;
+            background: rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }
+        .courses-preview h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .course-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .course-card:hover {
+            transform: translateY(-10px);
+        }
+        .course-image {
+            height: 180px;
+            background-color: #555;
+        }
+        .course-details {
+            padding: 1.5rem;
+        }
+        .course-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        .course-description {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .quotes {
+            margin-top: 2rem;
+        }
+        .quote {
+            display: none;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.3rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar d-flex align-items-center">
+        <div class="center-links">
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div>
+            <a href="logout.html">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Transform Your Learning Journey</h1>
+        <p>BrightMind provides personalized educational experiences that adapt to your unique learning style, goals, and pace.</p>
+        <div class="quotes">
+            <p class="quote">"The best way to predict your future is to create it." - Abraham Lincoln</p>
+            <p class="quote">"Believe you can, and you're halfway there." - Theodore Roosevelt</p>
+            <p class="quote">"Your mental health is a priority. Your happiness is essential."</p>
+            <p class="quote">"Success is not final, failure is not fatal: It is the courage to continue that counts." - Winston Churchill</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature-card">
+            <div class="feature-icon">📚</div>
+            <h3>Personalized Learning</h3>
+            <p>Our adaptive learning platform tailors educational content to your unique needs, learning style, and pace.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">👨‍🏫</div>
+            <h3>Expert Tutors</h3>
+            <p>Connect with certified educators and subject matter experts who provide one-on-one guidance and support.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Progress Tracking</h3>
+            <p>Monitor your academic growth with detailed analytics and actionable insights to optimize your learning journey.</p>
+        </div>
+    </section>
+
+    <!-- Courses Preview Section -->
+    <section class="courses-preview">
+        <h2>Popular Courses</h2>
+        <div class="course-grid">
+            <div class="course-card">
+                <div class="course-image"></div>
+                <div class="course-details">
+                    <h3 class="course-title">Advanced Mathematics</h3>
+                    <p class="course-description">Master calculus, linear algebra, and statistics with hands-on exercises and real-world applications.</p>
+                    <div class="course-meta">
+                        <span>8 weeks</span>
+                        <span>4.9 ★ (245 reviews)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="course-card">
+                <div class="course-image"></div>
+                <div class="course-details">
+                    <h3 class="course-title">Programming Fundamentals</h3>
+                    <p class="course-description">Build a strong foundation in programming concepts, algorithms, and problem-solving techniques.</p>
+                    <div class="course-meta">
+                        <span>10 weeks</span>
+                        <span>4.8 ★ (187 reviews)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="course-card">
+                <div class="course-image"></div>
+                <div class="course-details">
+                    <h3 class="course-title">Effective Study Techniques</h3>
+                    <p class="course-description">Learn evidence-based methods to improve memory, focus, and overall academic performance.</p>
+                    <div class="course-meta">
+                        <span>4 weeks</span>
+                        <span>4.9 ★ (312 reviews)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2>What Our Students Say</h2>
+        <div class="testimonial-slider">
+            <div class="testimonial">
+                <p class="testimonial-content">"BrightMind completely transformed my academic performance. The personalized study plans and one-on-one tutoring sessions helped me improve my grades dramatically within just one semester."</p>
+                <div class="testimonial-author">
+                    <img src="/api/placeholder/120/120" alt="Student portrait">
+                    <div class="author-details">
+                        <div class="author-name">Alex Johnson</div>
+                        <div class="author-title">Computer Science Student</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slider-nav">
+            <div class="slider-dot active"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <h2>Ready to Transform Your Learning Experience?</h2>
+        <p>Join thousands of students who have already unlocked their full potential with BrightMind.</p>
+        <div class="cta-buttons">
+            <a href="signup.php" class="cta-btn">Get Started</a>
+            <a href="courses.html" class="cta-btn">Explore Courses</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 BrightMind. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Quote rotation
+            let quotes = $('.quote');
+            let index = 0;
+            
+            function showQuote() {
+                quotes.hide();
+                quotes.eq(index).fadeIn(1000);
+                index = (index + 1) % quotes.length;
+            }
+            
+            showQuote();
+            setInterval(showQuote, 4000);
+            
+            // Testimonial slider dots
+            $('.slider-dot').click(function() {
+                $('.slider-dot').removeClass('active');
+                $(this).addClass('active');
+                
+                // In a real implementation, would slide to the appropriate testimonial
+                // This is just a visual demo for now
+            });
+        });
+    </script>
+</body>
+</html>
